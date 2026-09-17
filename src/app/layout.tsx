@@ -22,6 +22,9 @@ export default function RootLayout({
         <main className="flex-1 container mx-auto p-4 md:p-6 lg:p-8">
           {children}
         </main>
+        <footer className="py-6 text-center text-sm text-slate-500 border-t border-slate-200 mt-auto">
+          Directed by Saurabh &middot; Because checking the Excel was too easy 😭
+        </footer>
       </body>
     </html>
   );
