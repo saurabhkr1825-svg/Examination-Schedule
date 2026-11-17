@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Clock } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 interface CountdownProps {
   dates: string[];
@@ -148,61 +147,63 @@ export function ExamCountdown({ dates }: CountdownProps) {
 
   if (!isClient) {
     return (
-      <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-xl p-6 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Clock className="h-6 w-6 text-blue-200" />
-          <span className="font-medium text-lg">Autumn 2026 End-Semester Examination Schedule</span>
+      <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-xl p-4 sm:p-6 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-blue-200 shrink-0" />
+          <span className="font-medium text-sm sm:text-base md:text-lg">Autumn 2026 End-Semester Examination Schedule</span>
         </div>
-        <Badge className="bg-blue-600/80 text-white border-0">21 Nov – 30 Nov 2026</Badge>
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-600/90 text-white shadow-2xs whitespace-nowrap shrink-0">
+          21 Nov – 30 Nov 2026
+        </span>
       </div>
     );
   }
 
   return (
-    <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white rounded-xl p-6 shadow-lg border border-blue-600">
+    <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white rounded-xl p-4 sm:p-6 shadow-lg border border-blue-600">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="space-y-1 text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <div className="space-y-1 text-center md:text-left min-w-0">
+          <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
             <span className="text-xs uppercase tracking-wider font-semibold text-blue-200">
               Autumn 2026 End-Semester Exam Portal
             </span>
-            <Badge className={`${isLive ? "bg-amber-500" : "bg-blue-600"} text-white border-0 text-xs ml-2`}>
+            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold text-white whitespace-nowrap shadow-2xs ${isLive ? "bg-amber-500" : "bg-blue-600"}`}>
               {sessionBadge}
-            </Badge>
+            </span>
           </div>
-          <p className="text-sm text-blue-100 font-medium">
+          <p className="text-xs sm:text-sm text-blue-100 font-medium">
             {statusMessage}
           </p>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-4">
-          <div className="flex flex-col items-center bg-black/25 rounded-lg px-3 py-2 min-w-[60px] border border-white/10">
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-mono">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 shrink-0">
+          <div className="flex flex-col items-center bg-black/25 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 min-w-[46px] sm:min-w-[60px] border border-white/10">
+            <span className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight font-mono">
               {String(timeLeft.days).padStart(2, "0")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-blue-200 font-medium">Days</span>
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-blue-200 font-medium">Days</span>
           </div>
-          <span className="text-2xl font-bold text-blue-300">:</span>
-          <div className="flex flex-col items-center bg-black/25 rounded-lg px-3 py-2 min-w-[60px] border border-white/10">
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-mono">
+          <span className="text-base sm:text-2xl font-bold text-blue-300">:</span>
+          <div className="flex flex-col items-center bg-black/25 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 min-w-[46px] sm:min-w-[60px] border border-white/10">
+            <span className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight font-mono">
               {String(timeLeft.hours).padStart(2, "0")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-blue-200 font-medium">Hours</span>
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-blue-200 font-medium">Hours</span>
           </div>
-          <span className="text-2xl font-bold text-blue-300">:</span>
-          <div className="flex flex-col items-center bg-black/25 rounded-lg px-3 py-2 min-w-[60px] border border-white/10">
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-mono">
+          <span className="text-base sm:text-2xl font-bold text-blue-300">:</span>
+          <div className="flex flex-col items-center bg-black/25 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 min-w-[46px] sm:min-w-[60px] border border-white/10">
+            <span className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight font-mono">
               {String(timeLeft.minutes).padStart(2, "0")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-blue-200 font-medium">Mins</span>
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-blue-200 font-medium">Mins</span>
           </div>
-          <span className="text-2xl font-bold text-blue-300">:</span>
-          <div className="flex flex-col items-center bg-black/25 rounded-lg px-3 py-2 min-w-[60px] border border-white/10">
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-mono text-emerald-300">
+          <span className="text-base sm:text-2xl font-bold text-blue-300">:</span>
+          <div className="flex flex-col items-center bg-black/25 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 min-w-[46px] sm:min-w-[60px] border border-white/10">
+            <span className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight font-mono text-emerald-300">
               {String(timeLeft.seconds).padStart(2, "0")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-blue-200 font-medium">Secs</span>
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-blue-200 font-medium">Secs</span>
           </div>
         </div>
       </div>

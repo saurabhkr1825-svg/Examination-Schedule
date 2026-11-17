@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "parse": "tsx scripts/parse-excel.ts",
     "validate": "tsx scripts/parse-excel.ts",
-    "test": "tsx scripts/test-integrity.ts"
+    "test": "tsx scripts/test-integrity.ts",
+    "test:responsive": "tsx scripts/test-breakpoints.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

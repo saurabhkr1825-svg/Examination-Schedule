@@ -64,15 +64,14 @@ export default function CoursesPage() {
                 </Badge>
               </CardHeader>
               <CardContent className="p-4">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {grouped[prefix].map((c) => (
                     <Link key={c} href={`/courses/${encodeURIComponent(c)}`}>
-                      <Badge
-                        variant="outline"
-                        className="px-3 py-1.5 text-sm font-mono cursor-pointer bg-white hover:bg-blue-50 hover:text-blue-700 hover:border-blue-400 transition-colors shadow-2xs"
+                      <span
+                        className="inline-flex items-center justify-center px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-mono font-medium rounded-lg bg-white border border-slate-200 text-slate-800 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-400 transition-colors shadow-2xs cursor-pointer"
                       >
                         {c}
-                      </Badge>
+                      </span>
                     </Link>
                   ))}
                 </div>

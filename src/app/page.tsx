@@ -29,14 +29,14 @@ export default function Home() {
       <ExamCountdown dates={data.examDates} />
 
       {/* Main Hero & Student Search */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm border border-slate-200/80 text-center space-y-6">
+      <div className="bg-white rounded-2xl p-4 sm:p-8 md:p-10 shadow-sm border border-slate-200/80 text-center space-y-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Sparkles className="h-3.5 w-3.5" />
           Official Examination Portal
         </div>
 
         <div className="space-y-2 max-w-2xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Autumn 2026
           </h1>
           <h2 className="text-xl sm:text-2xl font-bold text-blue-700">
@@ -76,55 +76,55 @@ export default function Home() {
         <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
           <span>Examination Highlights</span>
         </h3>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <Card className="shadow-sm border-slate-200 hover:shadow-md transition-shadow">
-            <CardContent className="p-5 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-blue-100 text-blue-700">
-                <Calendar className="h-6 w-6" />
+            <CardContent className="p-3.5 sm:p-5 flex items-center gap-3 sm:gap-4">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-blue-100 text-blue-700 shrink-0">
+                <Calendar className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Exam Dates</p>
-                <p className="text-2xl font-extrabold text-slate-900">{totalDates}</p>
-                <p className="text-[11px] text-slate-500">21 Nov &ndash; 30 Nov</p>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 truncate">Exam Dates</p>
+                <p className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">{totalDates}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 truncate">21 Nov &ndash; 30 Nov</p>
               </div>
             </CardContent>
           </Card>
 
           <Card className="shadow-sm border-slate-200 hover:shadow-md transition-shadow">
-            <CardContent className="p-5 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-indigo-100 text-indigo-700">
-                <BookOpen className="h-6 w-6" />
+            <CardContent className="p-3.5 sm:p-5 flex items-center gap-3 sm:gap-4">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-indigo-100 text-indigo-700 shrink-0">
+                <BookOpen className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Courses</p>
-                <p className="text-2xl font-extrabold text-slate-900">{totalCourses}</p>
-                <p className="text-[11px] text-slate-500">Scheduled events</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-sm border-slate-200 hover:shadow-md transition-shadow">
-            <CardContent className="p-5 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-emerald-100 text-emerald-700">
-                <Building2 className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Exam Rooms</p>
-                <p className="text-2xl font-extrabold text-slate-900">{totalRooms}</p>
-                <p className="text-[11px] text-slate-500">Halls & CC Labs</p>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 truncate">Courses</p>
+                <p className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">{totalCourses}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 truncate">Scheduled events</p>
               </div>
             </CardContent>
           </Card>
 
           <Card className="shadow-sm border-slate-200 hover:shadow-md transition-shadow">
-            <CardContent className="p-5 flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-violet-100 text-violet-700">
-                <Users className="h-6 w-6" />
+            <CardContent className="p-3.5 sm:p-5 flex items-center gap-3 sm:gap-4">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
+                <Building2 className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Students</p>
-                <p className="text-2xl font-extrabold text-slate-900">{totalStudents.toLocaleString()}</p>
-                <p className="text-[11px] text-slate-500">Registered rolls</p>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 truncate">Exam Rooms</p>
+                <p className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">{totalRooms}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 truncate">Halls & CC Labs</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-sm border-slate-200 hover:shadow-md transition-shadow">
+            <CardContent className="p-3.5 sm:p-5 flex items-center gap-3 sm:gap-4">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-violet-100 text-violet-700 shrink-0">
+                <Users className="h-5 w-5 sm:h-6 sm:w-6" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 truncate">Students</p>
+                <p className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight">{totalStudents.toLocaleString()}</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 truncate">Registered rolls</p>
               </div>
             </CardContent>
           </Card>
