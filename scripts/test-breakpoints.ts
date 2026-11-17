@@ -133,9 +133,14 @@ async function run() {
 
     // Navigate to /timetable and wait for load
     const navigatePromise = new Promise<void>((resolve) => {
+      const timer = setTimeout(() => {
+        ws.removeEventListener("message", handler);
+        resolve();
+      }, 3500);
       const handler = (event: Event) => {
         const msg = JSON.parse((event as MessageEvent).data as string);
         if (msg.method === "Page.loadEventFired") {
+          clearTimeout(timer);
           ws.removeEventListener("message", handler);
           resolve();
         }
@@ -143,7 +148,8 @@ async function run() {
       ws.addEventListener("message", handler);
     });
 
-    await send("Page.navigate", { url: "http://localhost:3006/timetable" });
+    const baseUrl = process.env.TEST_URL || "https://examination-schedule.vercel.app";
+    await send("Page.navigate", { url: `${baseUrl}/timetable` });
     await navigatePromise;
     // Wait for hydration
     await wait(1200);
@@ -182,7 +188,7 @@ async function run() {
         const weekdayBadges = Array.from(document.querySelectorAll('span[aria-label*="Weekday:"]'));
         const badgeCheck = weekdayBadges.map(b => {
           const rect = b.getBoundingClientRect();
-          const text = (b as HTMLElement).innerText.trim();
+          const text = b.innerText.trim();
           return {
             text,
             width: rect.width,
@@ -193,7 +199,7 @@ async function run() {
 
         // Check timing badges
         const timingBadges = Array.from(document.querySelectorAll('.font-mono')).filter(el => 
-          (el as HTMLElement).innerText.includes('9:30 AM') || (el as HTMLElement).innerText.includes('3:00 PM')
+          el.innerText.includes('9:30 AM') || el.innerText.includes('3:00 PM')
         );
 
         return {
@@ -210,6 +216,10 @@ async function run() {
       returnByValue: true,
     });
 
+    if (!evalRes.result || !evalRes.result.value) {
+      console.error("CDP Evaluate failed:", JSON.stringify(evalRes));
+      continue;
+    }
     const res = evalRes.result.value;
 
     // Check 1: No Horizontal Overflow
@@ -262,14 +272,14 @@ async function run() {
         expression: `(async () => {
           const btn = document.querySelector('button[aria-label*="navigation menu"]');
           if (!btn) return { ok: false, reason: "button not found" };
-          (btn as HTMLElement).click();
+          btn.click();
           await new Promise(r => setTimeout(r, 200));
           
           const isButtonExpanded = btn.getAttribute('aria-expanded') === 'true';
-          const menuItems = Array.from(document.querySelectorAll('header a')).map(a => (a as HTMLElement).innerText.trim());
+          const menuItems = Array.from(document.querySelectorAll('header a')).map(a => a.innerText.trim());
           
           // Click again to close
-          (btn as HTMLElement).click();
+          btn.click();
           await new Promise(r => setTimeout(r, 200));
           const isClosedAfterClick = btn.getAttribute('aria-expanded') === 'false';
 
@@ -302,7 +312,8 @@ async function run() {
     deviceScaleFactor: 1,
     mobile: true,
   });
-  await send("Page.navigate", { url: "http://localhost:3006/" });
+  const baseUrl = process.env.TEST_URL || "https://examination-schedule.vercel.app";
+  await send("Page.navigate", { url: `${baseUrl}/` });
   await wait(800);
 
   interface HomeEvaluation {
