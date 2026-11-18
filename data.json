@@ -140,17 +140,17 @@
       "slot": "Morning",
       "time": "9:30 AM – 12:30 PM"
     },
-    "CE2102-25 November 2026-Morning": {
-      "id": "CE2102-25 November 2026-Morning",
+    "CE2102-27 November 2026-Morning": {
+      "id": "CE2102-27 November 2026-Morning",
       "courseCode": "CE2102",
-      "date": "25 November 2026",
+      "date": "27 November 2026",
       "slot": "Morning",
       "time": "9:30 AM – 12:30 PM"
     },
-    "CE2103-27 November 2026-Morning": {
-      "id": "CE2103-27 November 2026-Morning",
+    "CE2103-25 November 2026-Morning": {
+      "id": "CE2103-25 November 2026-Morning",
       "courseCode": "CE2103",
-      "date": "27 November 2026",
+      "date": "25 November 2026",
       "slot": "Morning",
       "time": "9:30 AM – 12:30 PM"
     },

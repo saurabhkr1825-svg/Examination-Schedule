@@ -36,11 +36,11 @@ assert(raStudentExams.size === 18401, "Unique student-exam allocations in Room A
 
 // 2. Mandatory Exception #1: CE2102 and CE2103
 const ce2102 = getCourseExams('CE2102');
-assert(ce2102.length > 0 && ce2102[0].exam.date === '25 November 2026' && ce2102[0].exam.slot === 'Morning', 
-  "CE2102 exam date is 25 November 2026 Morning");
+assert(ce2102.length > 0 && ce2102[0].exam.date === '27 November 2026' && ce2102[0].exam.slot === 'Morning', 
+  "CE2102 exam date is 27 November 2026 Morning");
 const ce2103 = getCourseExams('CE2103');
-assert(ce2103.length > 0 && ce2103[0].exam.date === '27 November 2026' && ce2103[0].exam.slot === 'Morning',
-  "CE2103 exam date is 27 November 2026 Morning");
+assert(ce2103.length > 0 && ce2103[0].exam.date === '25 November 2026' && ce2103[0].exam.slot === 'Morning',
+  "CE2103 exam date is 25 November 2026 Morning");
 
 // 3. Mandatory Exception #2: Student 2301ME42
 const me42Exams = getStudentExams('2301ME42');
