@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: "IIT Patna Autumn 2026 End-Semester Examination",
   description: "Official Examination Schedule, Room Allocations, and Student Seating for Autumn 2026 End-Semester Examinations at IIT Patna.",
   keywords: ["IIT Patna", "Autumn 2026", "End-Semester Examination", "Timetable", "Room Allocation", "Exam Schedule"],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
